@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexiEarn - Work From Home Opportunity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1e3c72;
+            --secondary: #2a5298;
+            --accent: #4cd964;
+            --light: #f5f7fa;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f1b33 0%, #1a2d55 100%);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(76, 217, 100, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 30%, rgba(30, 60, 114, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 30%);
+            z-index: -1;
+        }
+        
+        .floating-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            animation: float 20s infinite linear;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            left: 70%;
+            animation-delay: -10s;
+        }
+        
+        .floating-element:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 70%;
+            left: 10%;
+            animation-delay: -15s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, 50px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 80px) rotate(240deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(30, 60, 114, 0.8);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(76, 217, 100, 0.5);
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, var(--accent) 0%, #1e3c72 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            padding: 0 5px;
+            position: relative;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.5);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(30, 60, 114, 0.7);
+        }
+        
+        .btn-large {
+            padding: 18px 50px;
+            font-size: 1.3rem;
+        }
+        
+        .features {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            color: white;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            margin: 20px auto;
+            border-radius: 5px;
+            animation: expand 2s infinite;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 50px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.6rem;
+        }
+        
+        .calculator-section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .calculator-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .calculator-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: white;
+        }
+        
+        .calculator-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            box-shadow: 0 5px 20px rgba(76, 217, 100, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .calculator-result {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        .result-amount {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(76, 217, 100, 0.5);
+        }
+        
+        .earnings {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .earnings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .earning-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .earning-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+        }
+        
+        .earning-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .earning-amount {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .referral {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: 0 15px 35px rgba(76, 217, 100, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 3s infinite;
+        }
+        
+        .referral h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        
+        .referral p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .apply-section {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .apply-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .apply-title {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        .apply-description {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .legal-section {
+            padding: 80px 0;
+            background: rgba(15, 27, 51, 0.7);
+        }
+        
+        .legal-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .legal-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .legal-title {
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .legal-subtitle {
+            color: var(--accent);
+            margin: 30px 0 20px;
+            font-size: 1.4rem;
+        }
+        
+        .legal-text {
+            margin-bottom: 25px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        footer {
+            background: rgba(10, 18, 36, 0.9);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 30px;
+            line-height: 1.5;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin: 40px 0;
+        }
+        
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.7rem;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-links a:hover {
+            background: var(--accent);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(76, 217, 100, 0.4);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes expand {
+            0% {
+                width: 100px;
+            }
+            50% {
+                width: 150px;
+            }
+            100% {
+                width: 100px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .calculator-container {
+                padding: 30px;
+            }
+            
+            .apply-container {
+                padding: 40px 25px;
+            }
+            
+            .legal-content {
+                padding: 30px;
+            }
+            
+            .contact-links {
+                gap: 20px;
+            }
+            
+            .contact-links a {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-bg">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-laptop-house"></i>
+                    FlexiEarn
+                </div>
+                <div class="tagline">Your Gateway to Flexible Work From Home</div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Work From Home - <span class="highlight">No Investment Required</span></h1>
+                <p>Earn <span class="highlight">₹200 per day</span> working just 2 hours at your convenience between 6 AM to 11 PM. Complete flexibility to choose your working hours!</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNrdrzs16vSQe8TFVlNH_VY-ExmyvJL0TsXNOa6g0DU7ksLA/viewform?usp=dialog" class="btn btn-large" target="_blank">Apply Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose FlexiEarn?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Timing</h3>
+                    <p>Work anytime between 6 AM to 11 PM. Choose your own 2-hour slot that fits your schedule perfectly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>No Investment</h3>
+                    <p>Start earning without any upfront payment. We believe in your potential, not your pocket.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>7-Day Training</h3>
+                    <p>Comprehensive training program to prepare you for the job. Pass the training and start earning immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-container">
+                <h2 class="calculator-title">Earnings Calculator</h2>
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label for="days">Number of Days</label>
+                        <input type="number" id="days" min="1" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="weeks">Number of Weeks</label>
+                        <input type="number" id="weeks" min="1" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="referrals">Number of Referrals</label>
+                        <input type="number" id="referrals" min="0" value="0">
+                    </div>
+                </div>
+                <div class="calculator-result">
+                    <h3>Your Estimated Earnings</h3>
+                    <div class="result-amount">₹ 0</div>
+                    <p>Based on your inputs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="earnings">
+        <div class="container">
+            <h2 class="section-title">Earning Potential</h2>
+            <div class="earnings-grid">
+                <div class="earning-card">
+                    <div class="earning-amount">₹200</div>
+                    <p>Per Day</p>
+                </div>
+                <div class="earning-card">
+                    <div class="earning-amount">₹1,400</div>
+                    <p>Per Week</p>
+                </div>
+                <div class="earning-card">
+                    <div class="earning-amount">Weekly</div>
+                    <p>Payment Cycle</p>
+                </div>
+            </div>
+            
+            <div class="referral">
+                <h3>Referral Bonus Program</h3>
+                <p>Refer a friend and get <strong>₹100 bonus</strong> when they complete our training program. There's no limit to how many friends you can refer!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="apply-section">
+        <div class="container">
+            <div class="apply-container">
+                <h2 class="apply-title">Ready to Get Started?</h2>
+                <p class="apply-description">Join our team of remote workers and start earning from the comfort of your home. No experience required - we provide complete training!</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNrdrzs16vSQe8TFVlNH_VY-ExmyvJL0TsXNOa6g0DU7ksLA/viewform?usp=dialog" class="btn btn-large" target="_blank">
+                    <i class="fas fa-pencil-alt"></i> Apply Now
+                </a>
+                <p style="margin-top: 25px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">You'll be redirected to our application form</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="legal-section">
+        <div class="container">
+            <div class="legal-container">
+                <div class="legal-content">
+                    <h2 class="legal-title">Legal Disclaimer & Terms</h2>
+                    
+                    <h3 class="legal-subtitle">General Disclaimer</h3>
+                    <p class="legal-text">This work-from-home opportunity is provided on a part-time basis and does not constitute formal employment. All earnings are based on performance and completion of assigned tasks. The company reserves the right to modify terms, conditions, and compensation structure with prior notice.</p>
+                    
+                    <h3 class="legal-subtitle">Income Disclaimer</h3>
+                    <p class="legal-text">The earnings mentioned (₹200 per day, ₹1,400 per week) are potential earnings and not guaranteed. Actual earnings may vary based on task availability, quality of work, and adherence to guidelines. Payment is contingent upon successful completion and approval of work submitted.</p>
+                    
+                    <h3 class="legal-subtitle">Training Period</h3>
+                    <p class="legal-text">The 7-day training period is mandatory for all new applicants. Completion of training does not guarantee continued work opportunities. The company reserves the right to terminate the association if work quality does not meet established standards.</p>
+                    
+                    <h3 class="legal-subtitle">Referral Program Terms</h3>
+                    <p class="legal-text">The referral bonus of ₹100 per successful candidate is payable only after the referred individual completes the 7-day training program and remains active for at least 7 days post-training. The company reserves the right to modify or discontinue the referral program at any time without prior notice.</p>
+                    
+                    <h3 class="legal-subtitle">Compliance with Indian Laws</h3>
+                    <p class="legal-text">This opportunity operates in compliance with applicable Indian laws including but not limited to:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 20px; color: rgba(255, 255, 255, 0.9);">
+                        <li>Indian Contract Act, 1872</li>
+                        <li>Information Technology Act, 2000</li>
+                        <li>Consumer Protection Act, 2019</li>
+                    </ul>
+                    
+                    <h3 class="legal-subtitle">Taxation</h3>
+                    <p class="legal-text">All earnings are subject to applicable Indian income tax laws. Participants are responsible for declaring their income and paying taxes as per the Income Tax Act, 1961. The company will issue Form 16A for earnings exceeding the taxable threshold as per current regulations.</p>
+                    
+                    <h3 class="legal-subtitle">Grievance Redressal</h3>
+                    <p class="legal-text">For any complaints or grievances, please contact our Grievance Officer at grievance@flexiearn.in. We aim to resolve all issues within 15 days of receipt as per Indian consumer protection guidelines.</p>
+                    
+                    <h3 class="legal-subtitle">Privacy Policy</h3>
+                    <p class="legal-text">We collect and process personal information in accordance with the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011. Your data will be used solely for the purpose of this work opportunity and will not be shared with third parties without consent, except as required by law.</p>
+                    
+                    <h3 class="legal-subtitle">Limitation of Liability</h3>
+                    <p class="legal-text">The company shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your participation in this work opportunity. Our total liability, if any, shall not exceed the total compensation paid to you in the preceding month.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">FlexiEarn</div>
+                <p>Your flexible work from home solution</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:hk357879@gmail.com" title="Email Us">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://wa.link/mp97di" target="_blank" title="Contact on WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                
+                <p class="disclaimer">This is a part-time work from home opportunity. No investment is required to start. Payment is made weekly based on completed work. All applicants must complete the 7-day training program before starting paid work. This opportunity is open to Indian residents aged 18 years and above.</p>
+                
+                <p>&copy; 2025 FlexiEarn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Earnings Calculator
+        const daysInput = document.getElementById('days');
+        const weeksInput = document.getElementById('weeks');
+        const referralsInput = document.getElementById('referrals');
+        const resultAmount = document.querySelector('.result-amount');
+        
+        function calculateEarnings() {
+            const days = parseInt(daysInput.value) || 0;
+            const weeks = parseInt(weeksInput.value) || 0;
+            const referrals = parseInt(referralsInput.value) || 0;
+            
+            // Calculate earnings
+            const dailyEarnings = days * 200;
+            const weeklyEarnings = weeks * 1400;
+            const referralEarnings = referrals * 100;
+            
+            const totalEarnings = dailyEarnings + weeklyEarnings + referralEarnings;
+            
+            // Format number with Indian rupee formatting
+            const formattedEarnings = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumFractionDigits: 0
+            }).format(totalEarnings);
+            
+            resultAmount.textContent = formattedEarnings;
+        }
+        
+        // Add event listeners to inputs
+        daysInput.addEventListener('input', calculateEarnings);
+        weeksInput.addEventListener('input', calculateEarnings);
+        referralsInput.addEventListener('input', calculateEarnings);
+        
+        // Calculate initial earnings on page load
+        calculateEarnings();
+        
+        // Backend email link
+        const backendEmailLink = document.createElement('a');
+        backendEmailLink.href = "mailto:hk357879@gmail.com";
+        backendEmailLink.textContent = "Contact Email";
+        backendEmailLink.style.display = 'none';
+        document.body.appendChild(backendEmailLink);
+        
+        // Add scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .earning-card, .calculator-container, .apply-container').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
